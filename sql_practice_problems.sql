@@ -1,0 +1,10 @@
+select pno, pname from proj where budget >  100000;
+select * from workson where hours < 10 and resp = 'Manager';
+select eno, ename from emp where (title = 'EE' or title = 'SA') and salary > 35000;
+select ename from emp where dno = 'D1' order by salary desc;
+select * from dept order by dname ;
+select e.ename , d.dname , e.title from emp e left join dept d on e.dno = d.dno;
+select p.pname , w.hours , w.pno  from proj p right join workson w on p.pno = w.pno where hours > 10;
+select p.pname , d.dname , p.budget  from proj p right join dept d on p.dno = d.dno where budget < 50000;
+select e.eno , e.salary , d.dname from emp e right join dept d on e.dno = d.dno where dname = 'Consulting' order by salary desc;
+select e.ename, p.pname, e.title, w.hours from proj p left join workson w on p.pno = w.pno left join emp e on w.eno = e.eno;
