@@ -1,0 +1,22 @@
+create table departments(dept_id int primary key, dept_name varchar(30));
+insert into departments(dept_id,dept_name)values(101,'HR');
+insert into departments(dept_id,dept_name)values(102,'IT');
+insert into departments(dept_id,dept_name)values(103,'Marketing');
+insert into departments(dept_id,dept_name)values(104,'Finance');
+create table employees(emp_id int primary key auto_increment, emp_name varchar(30),dept_id int,foreign key(dept_id) references departments(dept_id));
+insert into employees(emp_name,dept_id)values('Alice',101);
+insert into employees(emp_name,dept_id)values('Bob',102);
+insert into employees(emp_name,dept_id)values('Charlie',103);
+insert into employees(emp_name)values('David');
+insert into employees(emp_name,dept_id)values('Eva',101); 
+select e.emp_name , d.dept_name from employees e inner join departments d  on e.dept_id = d.dept_id;
+select e.emp_name, d.dept_name from employees e left join departments d on e.dept_id=d.dept_id;
+select e.emp_name , d.dept_name from employees e right join departments d on e.dept_id = d.dept_id;
+select e.emp_id, e.emp_name, d.dept_id, d.dept_name from employees e left join departments d on e.dept_id=d.dept_id union
+select e.emp_id, e.emp_name, d.dept_id, d.dept_name from employees e right join departments d on e.dept_id = d.dept_id;
+select e.emp_id, e.emp_name , d.dept_name from employees e cross join departments d;
+select A.emp_id as em_id , A.emp_name as em_name, B.emp_name as p_name from employees A join employees B on A.dept_id = B.dept_id where A.emp_id != B.emp_id;
+select e.emp_name, d.dept_name from employees e left join departments d on e.dept_id = d.dept_id where d.dept_name = 'HR';
+select e.emp_name, d.dept_name from employees e left join departments d on e.dept_id = d.dept_id order by d.dept_name;
+select E.emp_name, D.dept_name from employees E left join departments D on E.dept_id = D.dept_id;
+select d.dept_name, count(e.emp_id) as employee_count from departments d left join employees e on d.dept_id = e.dept_id group by d.dept_name;
