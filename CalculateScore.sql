@@ -1,5 +1,10 @@
-CREATE TABLE user_answers ( answer_id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, question_id INT, selected_option_id INT ); 
-CREATE TABLE options ( option_id INT AUTO_INCREMENT PRIMARY KEY, question_id INT, option_text VARCHAR(25), is_correct BOOLEAN ); 
+CREATE TABLE user_answers ( answer_id INT AUTO_INCREMENT PRIMARY KEY,
+user_id INT,FOREIGN KEY (user_id) REFERENCES users(user_id), 
+question_id INT,FOREIGN KEY (question_id) REFERENCES questions(question_id), selected_option_id INT ); 
+
+CREATE TABLE options ( option_id INT AUTO_INCREMENT PRIMARY KEY,
+question_id INT, FOREIGN KEY (question_id) REFERENCES questions(question_id),
+option_text VARCHAR(25), is_correct BOOLEAN ); 
 
 INSERT INTO users (username, email)
 VALUES ('Adithya', 'adithya@example.com'),('Jani', 'jani@example.com'),('Sneha', 'sneha@example.com');
@@ -8,7 +13,7 @@ INSERT INTO options (question_id, option_text, is_correct)
 VALUES (1, 'Python', TRUE),(1, 'C++', FALSE),(1, 'Java', FALSE),(2, 'HTML', TRUE),(2, 'CSS', FALSE),(2, 'Python', FALSE);
 
 INSERT INTO user_answers (user_id, question_id, selected_option_id)
-VALUES (1, 1, 1), (1, 2, 4),  (2, 1, 3),(2, 2, 5),(3, 1, 2),(3, 2, 4);  
+VALUES (1, 1, 1), (1, 2, 4),  (2, 1, 1),(2, 2, 5),(3, 1, 2),(3, 2, 4);  
 
 DELIMITER //
 
