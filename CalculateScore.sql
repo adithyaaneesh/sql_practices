@@ -10,10 +10,18 @@ INSERT INTO users (username, email)
 VALUES ('Adithya', 'adithya@example.com'),('Jani', 'jani@example.com'),('Sneha', 'sneha@example.com');
 
 INSERT INTO options (question_id, option_text, is_correct)
-VALUES (1, 'Python', TRUE),(1, 'C++', FALSE),(1, 'Java', FALSE),(2, 'HTML', TRUE),(2, 'CSS', FALSE),(2, 'Python', FALSE);
+VALUES (1, 'JavaScript XML', TRUE),(1, 'C++', FALSE),(1, 'Java', FALSE),
+(2, 'useState()', TRUE),(2, 'useEffect()', FALSE),(2, 'useRef()', FALSE),
+(3, 'HyperText Markup Language', TRUE),(3, 'CascadingStyleSheet', FALSE),(3, 'HyperText Transfer', FALSE),
+(4, '<a>', TRUE),(4, '<b>', FALSE),(4, '<h1>', FALSE),
+(5, '// , /*..*/', TRUE),(5, 'll', FALSE),(5, 'bb', FALSE),
+(6, '"object"', TRUE),(6, '"class"', FALSE),(6, 'datatype', FALSE),
+(7, 'web development', TRUE),(7, 'frontend design', FALSE),(7, 'UI/UX', FALSE);
 
 INSERT INTO user_answers (user_id, question_id, selected_option_id)
-VALUES (1, 1, 1), (1, 2, 4),  (2, 1, 1),(2, 2, 5),(3, 1, 2),(3, 2, 4);  
+VALUES(1, 1, 1),(1, 3, 7),(1, 5, 13),(1, 7, 19),
+(2, 2, 4),(2, 4, 10),(2, 6, 16),
+(3, 1, 1),(3, 2, 4);
 
 DELIMITER //
 
