@@ -34,3 +34,21 @@ END //
 
 DELIMITER ;
 
+ALTER TABLE options
+DROP FOREIGN KEY options_ibfk_1;
+
+ALTER TABLE user_answers
+DROP FOREIGN KEY user_answers_ibfk_2;
+
+ALTER TABLE options
+ADD CONSTRAINT options_ibfk_1
+    FOREIGN KEY (question_id)
+    REFERENCES questions(question_id)
+    ON DELETE CASCADE;
+
+ALTER TABLE user_answers
+ADD CONSTRAINT user_answers_ibfk_2
+    FOREIGN KEY (question_id)
+    REFERENCES questions(question_id)
+    ON DELETE CASCADE;
+
